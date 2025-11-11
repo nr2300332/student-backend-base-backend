@@ -25,7 +25,7 @@ const signUp = (req, res) => {
     // Insert
     const query = `
       INSERT INTO USER (EMAIL, ROLE, PASSWORD)
-      VALUES ('?,?,?')
+      VALUES (?,?,?)
     `;
 
     db.run(query, [email, role, password], (err) => {
@@ -57,9 +57,9 @@ const login = (req, res) => {
     return res.status(400).send('Please provide email and password.');
   }
 
-  const query = `SELECT * FROM USER WHERE EMAIL='${email}'`;
+  const query = `SELECT * FROM USER WHERE EMAIL=?`;
 
-  db.get(query, (err, row) => {
+  db.get(query, [email],(err, row) => {
     if (err) {
       console.log(err);
       return res.status(500).send('Database error');

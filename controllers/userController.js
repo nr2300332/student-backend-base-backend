@@ -37,7 +37,7 @@ const createUser = (req, res) => {
         VALUES (?,?,?)
       `;
   
-      db.run(query, [User, role, password], (err) => {
+      db.run(query, [email, role, password], (err) => {
         if (err) {
           // Handle unique constraint violation
           if (err.message.includes('UNIQUE constraint')) {
