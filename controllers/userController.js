@@ -34,7 +34,7 @@ const createUser = (req, res) => {
       // Insert
       const query = `
         INSERT INTO USER (EMAIL, ROLE, PASSWORD)
-        VALUES ('?', '?', '?')
+        VALUES (?,?,?)
       `;
   
       db.run(query, [User, role, password], (err) => {
