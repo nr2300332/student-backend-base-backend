@@ -17,7 +17,7 @@ const retrieveAllUsers = (req, res) => {
 };
 
 // Create a new user
-const createUser = (req, res) => {
+const createUser = (req, rs) => {
   const { email, role, password } = req.body;
 
   // Basic validation
